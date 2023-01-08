@@ -11,8 +11,11 @@ let arrAlarm = [];
 let dateAlarm, AMPM;
 
 setInterval(() => {
-  let date = new Date().toLocaleTimeString().split(":");
-  renderClock(...date);
+  let date = new Date();
+  let Hour = date.getHours();
+  let Minutes = date.getMinutes();
+  let second = date.getSeconds();
+  renderClock(Hour, Minutes, second);
 }, 1000);
 
 function renderClock(Hour, Minutes, second) {
