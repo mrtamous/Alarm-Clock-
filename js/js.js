@@ -31,8 +31,8 @@ function renderClock(Hour, Minutes, second) {
 function checkAlarm(Hour, Minutes, AMPM, second) {
   arrAlarm = arrAlarm.filter((alarm) => {
     if (
-      alarm.Hour == Hour &&
-      alarm.Minutes == Minutes &&
+      Number(alarm.Hour) == Number(Hour) &&
+      Number(alarm.Minutes) == Number(Minutes) &&
       alarm.AMPM == AMPM &&
       second == 0
     ) {
