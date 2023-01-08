@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/css.css" />
+    <title> </title>
+  </head>
+  <body>
+    <div class="Container">
+      <section class="clock">
+        <section class="clockContainer">
+          <div class="imgContainer">
+            <img src="./img/alarm.png" alt="alarmIcon" />
+          </div>
+          <h2 id="mainClock">00 : 00 : 00 AM</h2>
+        </section>
+
+        <section class="setAlarmContainer">
+          <div class="setTimeInput">
+            <input id="Hour" maxlength="2" type="number" placeholder="Hour" />
+            <input
+              id="Minutes"
+              maxlength="2"
+              type="number"
+              placeholder="Minutes" />
+            <div class="select">
+              <select name="AM/PM" value="AMPM" id="AMPM">
+                <option value="" selected disabled>AM/PM</option>
+                <option value="AM">AM</option>
+                <option value="PM">PM</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="setAlarm">Set Alarm</button>
+          <button class="Stop" id="hide">Stop sound</button>
+          <button class="Snooze" id="hide">5 Minute Snooze</button>
+        </section>
+
+        <section class="alarmsContainer"></section>
+      </section>
+    </div>
+
+    <script src="js/js.js"></script>
+  </body>
+</html>
