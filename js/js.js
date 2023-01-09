@@ -12,21 +12,13 @@ let dateAlarm, AMPM;
 
 setInterval(() => {
   let date = new Date();
-  let Hour = date.getHours();
-  let Minutes = date.getMinutes();
-  let second = date.getSeconds();
-  renderClock(Hour, Minutes, second);
+  let AMPM = date.toLocaleString("en-US");
+  let time = date.toLocaleTimeString().split(":");
+  AMPM = AMPM.slice(AMPM.length - 2);
+  renderClock(...time, AMPM);
 }, 1000);
 
-function renderClock(Hour, Minutes, second) {
-  AMPM = "AM";
-  if (Hour >= 12) {
-    Hour -= 12;
-    AMPM = "PM";
-  } else {
-    Hour = Hour == 0 ? 12 : Hour;
-    Hour;
-  }
+function renderClock(Hour, Minutes, second, AMPM) {
   mainClock.innerHTML = `${Hour} : ${Minutes} : ${second} ${AMPM} `;
   checkAlarm(Hour, Minutes, AMPM, second);
 }
