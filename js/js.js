@@ -6,7 +6,10 @@ const btnAlarm = document.querySelector(".setAlarm");
 const btnStop = document.querySelector(".Stop");
 const btnSnooze = document.querySelector(".Snooze");
 const alarmsContainer = document.querySelector(".alarmsContainer");
-let audio = new Audio("../audio/alarm-audio.mp3");
+let audio = new Audio(
+  "https://cdn.pixabay.com/audio/2021/08/09/audio_a4637e27f0.mp3"
+);
+// استخدمت في البداية صوت موجود ف مجلد الصوت لكن للاسف جتهب كانت مشكلة فيه وما شغل الصوت ف استخدمت رابط خارجي
 let arrAlarm = [];
 let dateAlarm, AMPM;
 
