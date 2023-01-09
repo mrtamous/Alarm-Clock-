@@ -24,7 +24,7 @@ setInterval(() => {
 function renderClock(Hour, Minutes, second, AMPM) {
   Hour = Hour > 12 ? Hour - 12 : Hour;
   Hour = Hour.toString().padStart(2, "0");
-  mainClock.innerHTML = `${Hour} : ${Minutes} : ${second} ${AMPM} `;
+  mainClock.innerHTML = `${Hour} : ${Minutes} : ${second.slice(0, 2)} ${AMPM} `;
   checkAlarm(Hour, Minutes, AMPM, second);
 }
 
@@ -34,7 +34,7 @@ function checkAlarm(Hour, Minutes, AMPM, second) {
       Number(alarm.Hour) == Number(Hour) &&
       Number(alarm.Minutes) == Number(Minutes) &&
       alarm.AMPM == AMPM &&
-      second == 0
+      second.slice(0, 2) == 0
     ) {
       audio.play();
       audio.loop = true;
