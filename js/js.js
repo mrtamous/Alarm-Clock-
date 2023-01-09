@@ -128,7 +128,20 @@ function getInput() {
 
   if (Hour && Minutes && AMPM != undefined) {
     dateAlarm = { Hour: Hour, Minutes: Minutes, AMPM: AMPM };
-    arrAlarm.push(dateAlarm);
+
+    if (
+      !arrAlarm.find(
+        (el) =>
+          el.Hour == dateAlarm.Hour &&
+          el.Minutes == dateAlarm.Minutes &&
+          el.AMPM == dateAlarm.AMPM
+      )
+    ) {
+      arrAlarm.push(dateAlarm);
+    } else {
+      alert("The Alarm is add");
+    }
+
     renderAlarm();
     return arrAlarm;
   }
