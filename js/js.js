@@ -19,6 +19,8 @@ setInterval(() => {
 }, 1000);
 
 function renderClock(Hour, Minutes, second, AMPM) {
+  Hour = Hour > 12 ? Hour - 12 : Hour;
+  Hour = Hour.toString().padStart(2, "0");
   mainClock.innerHTML = `${Hour} : ${Minutes} : ${second} ${AMPM} `;
   checkAlarm(Hour, Minutes, AMPM, second);
 }
@@ -46,12 +48,31 @@ btnSnooze.onclick = () => {
   audio.pause();
   btnStop.setAttribute("id", "hide");
   btnSnooze.setAttribute("id", "hide");
-  let newalr = new Date().toLocaleTimeString().split(":");
-  arrAlarm.push({
-    Hour: Number(newalr[0]) > 12 ? Number(newalr[0]) - 12 : newalr[0],
-    Minutes: Number(newalr[1]) + 5,
-    AMPM: Number(newalr[0]) > 12 ? "PM" : "AM",
-  });
+  let newalr = new Date();
+  Hour = newalr.getHours();
+  Minutes = newalr.getMinutes();
+  let AP = newalr.toLocaleString("en-US");
+  AP = AP.slice(AP.length - 2);
+  if (Minutes > 55 && Hour < 12) {
+    arrAlarm.push({
+      Hour: Hour + 1,
+      Minutes: 59 - Minutes,
+      AMPM: AP,
+    });
+  } else if (Hour >= 12) {
+    Hour = Hour - 12 == 0 ? 1 : Hour - 12;
+    arrAlarm.push({
+      Hour: Hour,
+      Minutes: Minutes + 5,
+      AMPM: AP,
+    });
+  } else {
+    arrAlarm.push({
+      Hour: Hour,
+      Minutes: Minutes + 5,
+      AMPM: AP,
+    });
+  }
 };
 
 btnStop.onclick = () => {
