@@ -198,4 +198,13 @@ input[type="number"] {
     font-size: large;
     font-weight: bold;
   }
+
+  .setAlarmContainer {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .setTimeInput {
+    flex-direction: column;
+  }
 }
