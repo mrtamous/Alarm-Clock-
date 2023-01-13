@@ -23,6 +23,7 @@ setInterval(() => {
 
 function renderClock(Hour, Minutes, second, AMPM) {
   Hour = Hour > 12 ? Hour - 12 : Hour;
+  Hour = Hour == 0 ? 12 : Hour;
   Hour = Hour.toString().padStart(2, "0");
   mainClock.innerHTML = `${Hour} : ${Minutes} : ${second.slice(0, 2)} ${AMPM} `;
   checkAlarm(Hour, Minutes, AMPM, second);
@@ -53,6 +54,7 @@ btnSnooze.onclick = () => {
   btnSnooze.setAttribute("id", "hide");
   let newalr = new Date();
   Hour = newalr.getHours();
+  Hour = Hour == 0 ? 12 : Hour;
   Minutes = newalr.getMinutes();
   let AP = newalr.toLocaleString("en-US");
   AP = AP.slice(AP.length - 2);
@@ -62,7 +64,7 @@ btnSnooze.onclick = () => {
       Minutes: 59 - Minutes,
       AMPM: AP,
     });
-  } else if (Hour >= 12) {
+  } else if (Hour >= 12 && AP == "PM") {
     Hour = Hour - 12 == 0 ? 1 : Hour - 12;
     arrAlarm.push({
       Hour: Hour,
