@@ -64,8 +64,7 @@ btnSnooze.onclick = () => {
       Minutes: 59 - Minutes,
       AMPM: AP,
     });
-  } else if (Hour >= 12 && AP == "PM") {
-    Hour = Hour - 12 == 0 ? 12 : Hour - 12;
+  } else if (Hour > 12 && AP == "PM") {
     arrAlarm.push({
       Hour: Hour,
       Minutes: Minutes + 5,
